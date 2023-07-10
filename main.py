@@ -36,6 +36,11 @@ class CreatePostForm(FlaskForm):
     body = StringField("Blog Content", validators=[DataRequired()])
     submit = SubmitField("Submit Post")
 
+@app.route("/new-post", methods=["GET", "POST"])
+def add_new_post():
+    form = CreatePostForm()
+    return render_template("make-post.html", form=form)
+
 
 # Render homepage using DB
 @app.route('/')
